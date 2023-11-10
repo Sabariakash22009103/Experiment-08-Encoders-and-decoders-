@@ -1,4 +1,4 @@
-# Experiment-08- Encoders-and-decoders 
+# Experiment-07- Encoders-and-decoders 
 ### AIM:
 
 To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
@@ -103,12 +103,21 @@ endmodule
 
 ### DECODER
 ```python
-module decoder(d0,d1,d2,d3,d4,d5,d6,d7,a,b,c);
-output d0,d1,d2,d3,d4,d5,d6,d7;
-input a,b,c;
-assign d0=(~a&~b&~c);
-assign d1=(~a&~b&c);
-assign d2=(~a&b&~c);
+module dec (a0,a1,a2,y0,y1,y2,y3,y4,y5,y6,y7);
+input a0,a1,a2;
+output y0,y1,y2,y3,y4,y5,y6,y7;
+wire a0bar,a1bar,a2bar;
+not(a0bar,a0);
+not(a1bar,a1);
+not(a2bar,a2);
+and(y0,a0bar,a1bar,a2bar);
+and(y1,a0,a1bar,a2bar);
+and(y2,a0bar,a1,a2bar);
+and(y3,a0,a1,a2bar);
+and(y4,a0bar,a1bar,a2);
+and(y5,a0,a1bar,a2);
+and(y6,a0bar,a1,a2);
+and(y7,a0,a1,a2);
 endmodule
 ```
 
